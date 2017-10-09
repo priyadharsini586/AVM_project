@@ -18,7 +18,10 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:theme="@style/AppTheme.Dark" ></activity>
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".CollectionRequest"
+            android:theme="@style/AppTheme.Dark"/>
     </application>
 
 </manifest>
