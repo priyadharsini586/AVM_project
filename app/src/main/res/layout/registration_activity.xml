@@ -27,17 +27,17 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_gravity="center"
-            android:paddingTop="20dp">
+            >
 <LinearLayout
-    android:layout_width="100dp"
+    android:layout_width="150dp"
     android:layout_height="100dp"
     android:background="@drawable/rounded_corner_border"
     android:gravity="center"
      >
         <ImageView
-            android:src="@mipmap/splash_avmlogo"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:src="@drawable/avmnew"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
            android:layout_gravity="center"
             />
 </LinearLayout>
@@ -52,85 +52,76 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:padding="@dimen/padding_reg_TextInput">
             <EditText android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:hint="Name" />
+                android:hint="@string/name" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:padding="@dimen/padding_reg_TextInput" >
             <EditText android:id="@+id/input_cmpy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="Company Name" />
+                android:hint="@string/company_name" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:padding="@dimen/padding_reg_TextInput">
             <EditText android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="City"/>
+                android:hint="@string/city"/>
         </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:padding="@dimen/padding_reg_TextInput">
                 <EditText android:id="@+id/input_pin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="Pin code"/>
+                    android:hint="@string/pin_code"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:padding="@dimen/padding_reg_TextInput">
                 <EditText android:id="@+id/input_mbl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="Mobile number"/>
+                    android:hint="@string/mbl_number"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                android:padding="@dimen/padding_reg_TextInput">
                 <EditText android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:hint="E-Mail"/>
+                    android:hint="@string/e_mail"/>
             </android.support.design.widget.TextInputLayout>
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_signup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:text="Sign Up"/>
+            android:text="@string/register"/>
 
 </LinearLayout>
 

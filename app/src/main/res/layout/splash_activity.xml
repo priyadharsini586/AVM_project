@@ -3,14 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:background="@android:color/white">
+    >
 
     <ImageView
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/vertical_projector"
+        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        >
+    <ImageView
+        android:layout_width="150dp"
         android:layout_height="100dp"
-        android:src="@mipmap/splash_avmlogo"
-        android:layout_centerInParent="true"/>
+        android:src="@drawable/avmnew"
+       android:layout_gravity="center"
+        android:background="@drawable/splash_rounded_corner"
+        android:id="@+id/imgSplash"/>
 
 
-
+    </LinearLayout>
 </RelativeLayout>
