@@ -21,4 +21,33 @@
     <string name="product">Product</string>
     <string name="download">Download</string>
     <string name="contact_us">Contact Us</string>
+    <string name="home_content">
+         &#160;&#160;AVM LABS PVT LTD (Formerly Known as BEST STANDARDS TECHNOLOGIES PVT LTD) is an accredited calibration lab under the group of AVM.\n\n
+
+  &#160;&#160;AVM LABS, focused on providing reliable and quality assured Instrumentation services.\n\n
+
+  &#160;&#160;AVM LABS offers the most comprehensive of calibration services such as Temperature, Electro-Technical, Mechanical (Dimensional, Pressure, Mass, Force, Torque, Volume, Density, Air Flow and Liquid Flow) and many more.  Calibrations are done both at the Laboratory and on-site (Customer\'s Premises).\n\n
+        AVM LABS has a ‘state of the art’, calibration laboratory which provides quality calibration and repairs for pressure and temperature instrumentation.\n\n
+        Through extensive in-house training and on site experience, our team at AVM LABS has the skills, qualifications and innovative and practical solutions for your business requirements. Employing world recognized test practices and methodology; we remain market leaders in the Calibration industry.\n\n
+        At AVM LABS we understand that Customers needs fast, efficient service and that means equipment must be calibrated and back in operation as quickly as possible. That’s why we endeavor to have all industrial grade equipment turned around within 24 hours, with 48 hours required for test grade equipment requiring greater accuracy. However in cases of extreme urgency we will work with the client to complete the calibration within the required time frame.\n\n
+        Ensuring that instruments are calibrated accurately requires a high level of expertise; at AVM LABS, we pride ourselves on ensuring that every job is carried out to meet stringent Indian &amp; International standards.\n\n\n
+        COMPANY PROFILE \n\n
+
+
+        <li> Calibration, repair of inspection, measurement and test equipment (Largest Scope of Accreditation in the Industry)</li>\n
+        <li> Offer onsite and two-shift laboratory service; overnight service also available</li>\n
+        <li> Equipment Supply</li>\n
+        <li> Training &amp;  Consultancy</li>\n
+        <li> Manpower Supply</li>\n
+         <li> Event Management</li>\n
+
+
+    </string>
+
+    <string name="other_services_content1">TRAINING AND CONSULTANCY</string>
+    <string name="other_services_content2">&#160;&#160;Training &amp; consultancy of technical and quality systems (NABL courses, nata australia courses, ISO 9001 &amp; NABL consultancy, in-house customized calibration courses).</string>
+    <string name="other_services_content3">MANPOWER SUPPLY</string>
+    <string name="other_services_content4">&#160;&#160;Trained /certified calibration engineers are available for your first off inspection,final inspection and calibration contract equipments.</string>
+    <string name="other_services_content5">EVENT MANAGEMENT</string>
+    <string name="other_services_content6">&#160;&#160;With more than 5 years of formal events experience including, conferences, seminars, trade shows, corprate event/meetings. We work with you to deliver your events anywhere around the world, offering the highest standard, attention to detail and a flexible approach providing as little or as much help as you need to support you fully for your important event. You get only one shot to get everything right and it has to be best! If you have an event in mind that needs that special attention to make it wonderful, get in touch with us and let us help you make it a reality.</string>
 </resources>

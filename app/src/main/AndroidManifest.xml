@@ -21,6 +21,8 @@
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".CollectionRequest"
+            android:theme="@style/AppTheme.Dark" />
+        <activity android:name=".HomeActivity"
             android:theme="@style/AppTheme.Dark"/>
     </application>
 

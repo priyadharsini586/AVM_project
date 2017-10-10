@@ -22,7 +22,8 @@
         android:src="@drawable/avmnew"
        android:layout_gravity="center"
         android:background="@drawable/splash_rounded_corner"
-        android:id="@+id/imgSplash"/>
+        android:id="@+id/imgSplash"
+        />
 
 
     </LinearLayout>
