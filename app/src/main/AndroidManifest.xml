@@ -22,8 +22,10 @@
         <activity
             android:name=".CollectionRequest"
             android:theme="@style/AppTheme.Dark" />
-        <activity android:name=".HomeActivity"
-            android:theme="@style/AppTheme.Dark"/>
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/collection" />
+        <activity android:name=".DownloadActivity"></activity>
     </application>
 
 </manifest>

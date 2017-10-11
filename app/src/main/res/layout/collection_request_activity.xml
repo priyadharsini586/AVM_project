@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="@dimen/padding_reg_TextInput">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,8 +48,8 @@
 
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/home" />
 
                     <TextView
@@ -62,7 +62,7 @@
             </LinearLayout>
 
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
@@ -70,7 +70,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/ldtCertificate">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,8 +80,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/certification" />
                 </LinearLayout>
 
@@ -92,7 +93,7 @@
                     android:text="@string/certification" />
             </LinearLayout>
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
@@ -105,11 +106,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:id="@+id/ldtOtherServices">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/other_services" />
 
                     <TextView
@@ -122,7 +124,7 @@
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="#a8a8a8"
            />
 
@@ -138,7 +140,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/ldtCalibration">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -147,9 +150,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/calibration3" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:src="@drawable/calibration4" />
                 </LinearLayout>
 
                 <TextView
@@ -160,14 +163,15 @@
                     android:text="@string/calibration" />
             </LinearLayout>
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/ldtSales">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -177,8 +181,8 @@
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/sales2" />
 
                     <TextView
@@ -190,14 +194,15 @@
 
             </LinearLayout>
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/ldtRepair">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -206,8 +211,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/repair_icon" />
 
                     <TextView
@@ -221,7 +226,7 @@
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="#a8a8a8"
             />
         <LinearLayout
@@ -242,22 +247,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:id="@+id/ldtCollectionRequest">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/collection" />
 
                     <TextView
                         style="@style/collection_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/collection_request" />
+                        android:text="@string/collection_request"
+                        android:maxLines="1"/>
                 </LinearLayout>
             </LinearLayout>
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
@@ -265,17 +272,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center"
+                android:id="@+id/ldtOnsiteRequest">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/online_request" />
 
                     <TextView
@@ -286,14 +295,15 @@
                 </LinearLayout>
             </LinearLayout>
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/ldtmblCalibration">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -302,8 +312,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/mobile_calibration" />
 
                     <TextView
@@ -311,14 +321,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/mobile_calibration"
-                        android:maxLines="2"/>
+                        android:maxLines="1"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="#a8a8a8"
             />
         <LinearLayout
@@ -332,7 +342,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/ldtProduct">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -341,8 +352,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/producct" />
 
                     <TextView
@@ -353,14 +364,15 @@
                 </LinearLayout>
             </LinearLayout>
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/ldtDownload">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -369,8 +381,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/dowloads1" />
 
                     <TextView
@@ -381,14 +393,15 @@
                 </LinearLayout>
             </LinearLayout>
             <View
-                android:layout_width="1dp"
+                android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:background="#a8a8a8"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/ldtContactUs">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -397,8 +410,8 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:src="@drawable/contact_us1" />
 
                     <TextView
