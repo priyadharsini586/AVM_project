@@ -17,7 +17,7 @@ public class HomeActivity extends AppCompatActivity  {
 
     TextView txtHomeContent,txtOtherServices;
     private WebView webHome;
-    LinearLayout ldtOtherServices;
+    LinearLayout ldtCertification;
     String fromWhere = "";
     ScrollView scrMainView;
     TextView txtToolbarText;
@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity  {
         scrMainView = (ScrollView) findViewById(R.id.scrMain);
 
         txtToolbarText = (TextView) findViewById(R.id.txtToolbarText);
-        ldtOtherServices = (LinearLayout) findViewById(R.id.ldtOtherServices);
+        ldtCertification = (LinearLayout) findViewById(R.id.ldtCertification);
         webHome = (WebView) findViewById(R.id.webHome);
 
         Bundle extrasBundle = getIntent().getExtras();
@@ -45,28 +45,27 @@ public class HomeActivity extends AppCompatActivity  {
             webHome.setVisibility(View.VISIBLE);
             webHome.loadUrl("file:///android_asset/home.html");
 
-            ldtOtherServices.setVisibility(View.GONE);
+            ldtCertification.setVisibility(View.GONE);
             webHome.setBackgroundColor(Color.TRANSPARENT);
             txtToolbarText.setText("Home");
         }else if (fromWhere.contains("certificate"))
         {
             txtToolbarText.setText("Certificate");
-            ldtOtherServices.setVisibility(View.GONE);
+            ldtCertification.setVisibility(View.VISIBLE);
             webHome.setVisibility(View.GONE);
         }else if (fromWhere.contains("otherServices"))
         {
             txtToolbarText.setText("Other Services");
-            ldtOtherServices.setVisibility(View.GONE);
-            webHome.setVisibility(View.GONE);
-            ldtOtherServices.setVisibility(View.VISIBLE);
-
+            webHome.setVisibility(View.VISIBLE);
+            webHome.loadUrl("file:///android_asset/otherservices.html");
+            webHome.setBackgroundColor(Color.TRANSPARENT);
+            ldtCertification.setVisibility(View.GONE);
         }else if (fromWhere.contains("sales")){
             txtToolbarText.setText("Sales");
             webHome.setVisibility(View.VISIBLE);
             webHome.loadUrl("file:///android_asset/sales.html");
             webHome.setBackgroundColor(Color.TRANSPARENT);
-           /* ldtOtherServices.setVisibility(View.GONE);
-            ldtCalibration.setVisibility(View.GONE);*/
+            ldtCertification.setVisibility(View.GONE);
 
         }else if (fromWhere.contains("repair")){
 
@@ -75,9 +74,19 @@ public class HomeActivity extends AppCompatActivity  {
             webHome.loadUrl("file:///android_asset/repair.html");
             txtToolbarText.setText("Repair");
             webHome.setBackgroundColor(Color.TRANSPARENT);
+            ldtCertification.setVisibility(View.GONE);
 
            /* ldtOtherServices.setVisibility(View.GONE);
             ldtCalibration.setVisibility(View.GONE);*/
+        }else if (fromWhere.contains("calibration")){
+            txtToolbarText.setText("Calibration");
+            webHome.setVisibility(View.VISIBLE);
+            webHome.loadUrl("file:///android_asset/calibration.html");
+            webHome.setBackgroundColor(Color.TRANSPARENT);
+            ldtCertification.setVisibility(View.GONE);
+           /* ldtOtherServices.setVisibility(View.GONE);
+            ldtCalibration.setVisibility(View.GONE);*/
+
         }
 
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_certification"
+            android:icon="@drawable/certification"
+            android:title="@string/certification" />
+        <item
+            android:id="@+id/nav_otherService"
+            android:icon="@drawable/other_services"
+            android:title="@string/other_services" />
+
+        <item
+            android:id="@+id/nav_calibration"
+            android:icon="@drawable/calibration4"
+            android:title="@string/calibration" />
+
+        <item
+            android:id="@+id/nav_sales"
+            android:icon="@drawable/sales"
+            android:title="@string/sales" />
+
+
+
+        <item
+            android:id="@+id/nav_repair"
+            android:icon="@drawable/repair_icon"
+            android:title="@string/repair" />
+
+        <item
+            android:id="@+id/nav_collection_request"
+            android:icon="@drawable/collection"
+            android:title="@string/collection_request" />
+
+
+        <item
+            android:id="@+id/nav_onsite_request"
+            android:icon="@drawable/online_request"
+            android:title="@string/onsite_request" />
+
+
+        <item
+            android:id="@+id/nav_mblClaibration"
+            android:icon="@drawable/calibration4"
+            android:title="@string/mobile_calibration" />
+
+
+        <item
+            android:id="@+id/nav_product"
+            android:icon="@drawable/producct"
+            android:title="@string/product" />
+
+
+
+        <item
+            android:id="@+id/nav_download"
+            android:icon="@drawable/dowloads1"
+            android:title="@string/download" />
+
+
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/contact_us1"
+            android:title="@string/contact_us" />
+
+    </group>
+
+</menu>
