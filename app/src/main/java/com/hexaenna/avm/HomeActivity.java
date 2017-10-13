@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView txtView,txtDownload,txtPercentage;
     private WebView webHome;
-    LinearLayout ldtCertification;
+    LinearLayout ldtCertification,ldtViewDownload,ldtProgressBar;
     String fromWhere = "";
     ScrollView scrMainView;
     TextView txtToolbarText;
@@ -76,6 +76,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         txtPercentage = (TextView) findViewById(R.id.txtPercentage);
 
+        ldtProgressBar = (LinearLayout) findViewById(R.id.ldtProgressBar);
+        ldtProgressBar.setVisibility(View.GONE);
+        ldtViewDownload =(LinearLayout) findViewById(R.id.ldtViewDownload);
+        ldtViewDownload.setOnClickListener(this);
 
         Bundle extrasBundle = getIntent().getExtras();
         if (extrasBundle != null)
@@ -92,11 +96,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             ldtCertification.setVisibility(View.GONE);
             webHome.setBackgroundColor(Color.TRANSPARENT);
             txtToolbarText.setText("Home");
+            ldtProgressBar.setVisibility(View.GONE);
+            ldtViewDownload.setVisibility(View.GONE);
         }else if (fromWhere.contains("certificate"))
         {
             txtToolbarText.setText("Certificate");
             ldtCertification.setVisibility(View.VISIBLE);
             webHome.setVisibility(View.GONE);
+            ldtProgressBar.setVisibility(View.GONE);
+            ldtViewDownload.setVisibility(View.VISIBLE);
         }else if (fromWhere.contains("otherServices"))
         {
             txtToolbarText.setText("Other Services");
@@ -104,12 +112,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             webHome.loadUrl("file:///android_asset/otherservices.html");
             webHome.setBackgroundColor(Color.TRANSPARENT);
             ldtCertification.setVisibility(View.GONE);
+            ldtProgressBar.setVisibility(View.GONE);
+            ldtViewDownload.setVisibility(View.GONE);
         }else if (fromWhere.contains("sales")){
             txtToolbarText.setText("Sales");
             webHome.setVisibility(View.VISIBLE);
             webHome.loadUrl("file:///android_asset/sales.html");
             webHome.setBackgroundColor(Color.TRANSPARENT);
             ldtCertification.setVisibility(View.GONE);
+            ldtProgressBar.setVisibility(View.GONE);
+            ldtViewDownload.setVisibility(View.GONE);
 
         }else if (fromWhere.contains("repair")){
 
@@ -119,6 +131,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             txtToolbarText.setText("Repair");
             webHome.setBackgroundColor(Color.TRANSPARENT);
             ldtCertification.setVisibility(View.GONE);
+            ldtProgressBar.setVisibility(View.GONE);
+            ldtViewDownload.setVisibility(View.GONE);
 
            /* ldtOtherServices.setVisibility(View.GONE);
             ldtCalibration.setVisibility(View.GONE);*/
@@ -128,6 +142,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             webHome.loadUrl("file:///android_asset/calibration.html");
             webHome.setBackgroundColor(Color.TRANSPARENT);
             ldtCertification.setVisibility(View.GONE);
+            ldtProgressBar.setVisibility(View.GONE);
+            ldtViewDownload.setVisibility(View.GONE);
            /* ldtOtherServices.setVisibility(View.GONE);
             ldtCalibration.setVisibility(View.GONE);*/
 
@@ -143,7 +159,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
                     ALL_PERMISSIONS_RESULT);
         } else {
-            Toast.makeText(getApplicationContext(),"Permissions already granted.", Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(),"Permissions already granted.", Toast.LENGTH_LONG).show();
         }
         progressBar = (ProgressBar) findViewById(R.id.progressBarPercen);
         progressBar.setIndeterminate(false);
@@ -151,35 +167,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         progressBar.setMax(100);
 
 
-        new Thread(new Runnable() {
-            public void run() {
-                while (progressStatus < 100) {
-                    progressStatus += 1;
-                    // Update the progress bar and display the
-                    //current value in the text view
-
-                    try {
-                        // Sleep for 200 milliseconds.
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.txtView:
-                view(v);
-                break;
-
-            case R.id.txtDownload:
+            case R.id.ldtViewDownload:
                 download(v);
                 break;
+
         }
     }
 
@@ -188,8 +185,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         boolean fileExists =  new File(Environment.getExternalStorageDirectory() + "/avm/" + "NABL_CERT_AND_SCOPE.pdf").isFile();
         if (fileExists)
             view(v);
-        else
+        else {
+            ldtProgressBar.setVisibility(View.VISIBLE);
             new DownloadFile().execute("http://avmlabs.in/images/download/NABL_CERT_AND_SCOPE.pdf", "NABL_CERT_AND_SCOPE.pdf");
+        }
 
 //        new DownloadFile().execute("http://avmlabs.in/images/download/NABL_CERT_AND_SCOPE.pdf", "NABL_CERT_AND_SCOPE.pdf");
     }
@@ -264,6 +263,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     downloadedSize += bufferLength;
                     per = ((float) downloadedSize / totalSize) * 100;
                     Integer percentage = (int) per;
+
                     publishProgress(percentage);
                 }
                 fileOutputStream.close();
@@ -286,6 +286,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             progressBar.setProgress(values[0]);
             txtPercentage.setText(String.valueOf(values[0]) + "%");
+
+            if (values[0] == 100)
+            {
+                ldtProgressBar.setVisibility(View.GONE);
+            }
         }
 
         /* @Override

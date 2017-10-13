@@ -90,7 +90,8 @@ Schedule of Best Measurement Capability &amp; Accreditation Certificate"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_below="@+id/ldtCertification"
-            android:id="@+id/ldtViewDownload">
+            android:id="@+id/ldtViewDownload"
+           >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,7 +127,9 @@ Schedule of Best Measurement Capability &amp; Accreditation Certificate"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/ldtViewDownload">
+            android:layout_below="@+id/ldtViewDownload"
+            android:id="@+id/ldtProgressBar"
+            android:visibility="gone">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
