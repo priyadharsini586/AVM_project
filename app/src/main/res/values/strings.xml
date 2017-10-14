@@ -59,4 +59,7 @@
     <string name="other_services_content6">&#160;&#160;&#160;With more than 5 years of formal events experience including, conferences, seminars, trade shows, corprate event/meetings. We work with you to deliver your events anywhere around the world, offering the highest standard, attention to detail and a flexible approach providing as little or as much help as you need to support you fully for your important event. You get only one shot to get everything right and it has to be best! If you have an event in mind that needs that special attention to make it wonderful, get in touch with us and let us help you make it a reality.</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    <string name="validate_e_mail">Please check your E-mail.</string>
+    <string name="str1">We have send verification code to your registered E-mail Id</string>
 </resources>
