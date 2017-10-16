@@ -30,11 +30,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidadvance.topsnackbar.TSnackbar;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.hexaenna.avm.api.ApiClient;
 import com.hexaenna.avm.api.ApiInterface;
 import com.hexaenna.avm.model.Login;
+import com.hexaenna.avm.model.RequestJson;
 import com.hexaenna.avm.utils.Constants;
 import com.hexaenna.avm.utils.NetworkChangeReceiver;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -154,14 +160,27 @@ public class SplashActivity extends AppCompatActivity {
         if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
             String e_mail = getE_mail();
             apiInterface = ApiClient.getClient().create(ApiInterface.class);
-            Call<Login> call = apiInterface.checkEmail("user@gmail.com");
+
+            RequestJson requestJson = new RequestJson("user@gmail.com");
+            Gson gson = new Gson();
+            String email = gson.toJson(requestJson);
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = new JSONObject(email);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            Call<Login> call = apiInterface.checkEmail(jsonObject);
             call.enqueue(new Callback<Login>() {
                 @Override
                 public void onResponse(Call<Login> call, Response<Login> response) {
                     if (response.isSuccessful()) {
                         Login login = response.body();
-                        if (login.getStatus_code() != null) {
-                            Log.e("output", String.valueOf(call.request().url()));
+                        Log.e("output", String.valueOf(call.request().url()));
+                        if (login.getStatus_code() != null)
+                        {
+
                             if (login.getStatus_code().equals(Constants.status_code0))
                             {
 

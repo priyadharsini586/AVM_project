@@ -128,6 +128,8 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
                         break;
                     case R.id.nav_download:
                         navView.getMenu().getItem(10).setChecked(true);
+                        Intent downloadIntent = new Intent(getApplicationContext(),DownloadActivity.class);
+                        startActivity(downloadIntent);
                         break;
                     case R.id.nav_contact_us:
                         navView.getMenu().getItem(11).setChecked(true);
@@ -191,6 +193,11 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
             case R.id.ldtRepair:
                 intent.putExtra("where","repair");
                 startActivity(intent);
+                break;
+
+            case R.id.ldtDownload:
+                Intent downloadIntent = new Intent(getApplicationContext(),DownloadActivity.class);
+                startActivity(downloadIntent);
                 break;
         }
     }
