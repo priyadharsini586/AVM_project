@@ -25,5 +25,6 @@
 
     <color name="light_grey">#dbdbdb</color>
     <color name="light_red">#e98a99</color>
+    <color name="yellow">#FFFF00</color>
 
 </resources>

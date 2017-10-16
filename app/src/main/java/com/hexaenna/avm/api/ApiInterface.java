@@ -3,6 +3,8 @@ package com.hexaenna.avm.api;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.hexaenna.avm.model.Login;
+import com.hexaenna.avm.model.RegisterRequest;
+import com.hexaenna.avm.model.RequestJson;
 
 import org.json.JSONObject;
 
@@ -21,8 +23,11 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
+    @FormUrlEncoded
     @POST("check_login.php")
-    Call<Login> checkEmail(@Query("x") JSONObject email);
+    Call<Login> checkEmail(@Field("x") JSONObject email);
 
-
+    @FormUrlEncoded
+    @POST("register.php")
+    Call<Login> registerDetails(@Field("x") JSONObject registerRequest);
 }

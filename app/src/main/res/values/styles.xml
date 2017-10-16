@@ -53,4 +53,9 @@
         <item name="colorAccent">#6c0082</item>
         <item name="android:progressBackgroundTint">#6c0082</item>
     </style>
+
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

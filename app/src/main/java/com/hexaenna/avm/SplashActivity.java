@@ -75,10 +75,13 @@ public class SplashActivity extends AppCompatActivity {
                 super.onReceive(context, intent);
 
 
-                Bundle b = intent.getExtras();
-                isConnection = b.getString(Constants.MESSAGE);
-                Log.e("newmesage", "" + isConnection);
-                getNetworkState();
+                if (isConnection == null) {
+                    Bundle b = intent.getExtras();
+                    isConnection = b.getString(Constants.MESSAGE);
+                    Log.e("newmesage", "connection connection");
+                    getNetworkState();
+                }
+
             }
         };
         IntentFilter intentFilter = new IntentFilter();
@@ -115,7 +118,6 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-//      checkEmail();
 
     }
 
@@ -158,15 +160,14 @@ public class SplashActivity extends AppCompatActivity {
     private void checkEmail() {
 
         if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
-            String e_mail = getE_mail();
+            final String e_mail = getE_mail();
+            Log.e("djjkdfdhd",e_mail);
             apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-            RequestJson requestJson = new RequestJson("user@gmail.com");
-            Gson gson = new Gson();
-            String email = gson.toJson(requestJson);
-            JSONObject jsonObject = null;
+            final RequestJson requestJson = new RequestJson("user12@gmail.com");
+            JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject = new JSONObject(email);
+                jsonObject.put("email","user12@gmail.com");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -177,17 +178,21 @@ public class SplashActivity extends AppCompatActivity {
                 public void onResponse(Call<Login> call, Response<Login> response) {
                     if (response.isSuccessful()) {
                         Login login = response.body();
-                        Log.e("output", String.valueOf(call.request().url()));
+
                         if (login.getStatus_code() != null)
                         {
 
+                            Log.e("output from splash", login.getStatus_message());
                             if (login.getStatus_code().equals(Constants.status_code0))
                             {
 
-                        new Handler().postDelayed(new Runnable(){
+                            new Handler().postDelayed(new Runnable(){
                             @Override
                             public void run() {
                                 Intent mainIntent = new Intent(SplashActivity.this,RegistrationActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("email",e_mail);
+                                mainIntent.putExtras(bundle);
                                 SplashActivity.this.startActivity(mainIntent);
                                 SplashActivity.this.finish();
                                 }
@@ -198,6 +203,9 @@ public class SplashActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         Intent mainIntent = new Intent(SplashActivity.this, E_MailValidation.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("email",e_mail);
+                                        mainIntent.putExtras(bundle);
                                         SplashActivity.this.startActivity(mainIntent);
                                         SplashActivity.this.finish();
                                     }
@@ -336,7 +344,7 @@ public class SplashActivity extends AppCompatActivity {
         for (Account account : accounts) {
             if (gmailPattern.matcher(account.name).matches()) {
                 e_mail = account.name;
-                Log.e("e_mail",e_mail);
+
                 break;
 
             }
@@ -353,10 +361,11 @@ public class SplashActivity extends AppCompatActivity {
 
     public void onResume() {
         super.onResume();
-        IntentFilter intentFilter = new IntentFilter();
+        Log.e("e_mail","onResume");
+     /*   IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         intentFilter.addAction(Constants.BROADCAST);
         this.registerReceiver(networkChangeReceiver,
-                intentFilter);
+                intentFilter);*/
     }
 }

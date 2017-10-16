@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/appColor">
+    android:background="@color/appColor"
+    android:id="@+id/sclRegisterMain">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar">
 
             <TextView
                 android:layout_width="match_parent"
@@ -28,7 +31,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_gravity="center"
-            >
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/ldtImage">
 <LinearLayout
     android:layout_width="150dp"
     android:layout_height="100dp"
@@ -41,19 +45,47 @@
             android:layout_height="100dp"
            android:layout_gravity="center"
             />
-</LinearLayout>
+             </LinearLayout>
             </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:layout_below="@+id/ldtImage"
+            android:id="@+id/txtMan"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/star"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/allfield"
+                android:textColor="@color/yellow"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
         <!--  Name Label -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingRight="20dp"
+            android:layout_below="@+id/txtMan">
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_reg_TextInput">
+            android:padding="@dimen/padding_reg_TextInput"
+            android:id="@+id/txtInputName"
+           app:errorTextAppearance="@style/error_appearance">
             <EditText android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,7 +97,9 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_reg_TextInput" >
+            android:padding="@dimen/padding_reg_TextInput"
+            android:id="@+id/txtInputCompanyName"
+            app:errorTextAppearance="@style/error_appearance">
             <EditText android:id="@+id/input_cmpy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,47 +110,62 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_reg_TextInput">
-            <EditText android:id="@+id/input_password"
+            android:padding="@dimen/padding_reg_TextInput"
+            android:id="@+id/txtInputCity"
+            app:errorTextAppearance="@style/error_appearance">
+            <EditText
+                android:id="@+id/input_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:hint="@string/city"/>
         </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_reg_TextInput">
+                android:padding="@dimen/padding_reg_TextInput"
+                android:id="@+id/txtInputPinCode"
+                app:errorTextAppearance="@style/error_appearance">
                 <EditText android:id="@+id/input_pin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/pin_code"
-                    android:inputType="number"/>
+                    android:inputType="number"
+                    android:maxLength="6"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_reg_TextInput">
+                android:padding="@dimen/padding_reg_TextInput"
+                app:errorTextAppearance="@style/error_appearance"
+                android:id="@+id/txtInputMobile">
+
                 <EditText android:id="@+id/input_mbl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:hint="@string/mbl_number"/>
+                    android:hint="@string/mbl_number"
+                    android:maxLength="10"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_reg_TextInput">
-                <EditText android:id="@+id/input_email"
+                android:padding="@dimen/padding_reg_TextInput"
+                app:errorTextAppearance="@style/error_appearance"
+                android:id="@+id/txtInputEMail">
+
+                <EditText
+                    android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/e_mail"
                     android:inputType="textEmailAddress"
-                    android:hint="@string/e_mail"/>
+                    android:enabled="false"/>
             </android.support.design.widget.TextInputLayout>
-        <!-- Signup Button -->
+            <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_registration"
             android:layout_width="fill_parent"
@@ -125,5 +174,13 @@
 
 </LinearLayout>
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:max="100"
+           android:layout_gravity="center"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
 </ScrollView>

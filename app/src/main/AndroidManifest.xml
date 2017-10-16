@@ -55,7 +55,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".E_MailValidation"></activity>
+        <activity android:name=".E_MailValidation"
+            ></activity>
     </application>
 
 </manifest>
