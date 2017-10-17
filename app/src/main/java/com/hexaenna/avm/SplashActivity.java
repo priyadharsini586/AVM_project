@@ -161,13 +161,13 @@ public class SplashActivity extends AppCompatActivity {
 
         if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
             final String e_mail = getE_mail();
-            Log.e("djjkdfdhd",e_mail);
+//            Log.e("djjkdfdhd",e_mail);
             apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
             final RequestJson requestJson = new RequestJson("user12@gmail.com");
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("email","user12@gmail.com");
+                jsonObject.put("email","user2@gmail.com");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

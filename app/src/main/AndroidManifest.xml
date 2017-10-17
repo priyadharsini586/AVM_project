@@ -35,7 +35,8 @@
         <activity
             android:name=".HomeActivity"
             android:theme="@style/collection" />
-        <activity android:name=".DownloadActivity" />
+        <activity android:name=".DownloadActivity"
+            android:theme="@style/AppTheme.Dark"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

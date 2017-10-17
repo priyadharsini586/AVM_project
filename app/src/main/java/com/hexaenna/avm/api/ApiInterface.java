@@ -30,4 +30,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("register.php")
     Call<Login> registerDetails(@Field("x") JSONObject registerRequest);
+
+    @FormUrlEncoded
+    @POST("verify_email.php")
+    Call<Login> validateE_mail(@Field("x") JSONObject verifyRequest);
 }

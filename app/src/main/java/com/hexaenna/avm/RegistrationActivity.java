@@ -95,8 +95,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         txtInputEMail = (TextInputLayout) findViewById(R.id.txtInputEMail);
 
         Bundle bundle = this.getIntent().getExtras();
-        String b = bundle.getString("email");
-        edtE_mail.setText(b);
+        if (bundle.getString("email") != null) {
+            String b = bundle.getString("email");
+            edtE_mail.setText(b);
+        }
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
@@ -144,16 +146,16 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             String cityname  =  edtCity.getText().toString().trim();
             String pincode =edtPinCode.getText().toString().trim();
             String mbl = edtMbl.getText().toString().trim();
-            String e_mail = "user12@gmail.com";
+            String e_mail = edtE_mail.getText().toString().trim();
 
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("name","dfk");
-                jsonObject.put("comp_name","dfk");
-                jsonObject.put("city","dfk");
-                jsonObject.put("pincode","145455");
-                jsonObject.put("mobile","4444465865");
-                jsonObject.put("email","user12@gmail.com");
+                jsonObject.put("name",name);
+                jsonObject.put("comp_name",companyName);
+                jsonObject.put("city",cityname);
+                jsonObject.put("pincode",pincode);
+                jsonObject.put("mobile",mbl);
+                jsonObject.put("email",e_mail);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -176,6 +178,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                 progressBar.setVisibility(View.GONE);
                                 Intent intent = new Intent(getApplicationContext(),E_MailValidation.class);
                                 startActivity(intent);
+                            }else
+                            {
+                                progressBar.setVisibility(View.GONE);
                             }
                         }
                     }
