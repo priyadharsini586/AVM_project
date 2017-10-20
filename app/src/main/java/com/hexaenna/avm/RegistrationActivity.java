@@ -130,7 +130,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         if (isNameValidate() && isCompanyNameValidate() && isCityValidate() && isPinValidate() && isMobileValidate() && isE_mailValidate())
         {
             progressBar.setVisibility(View.VISIBLE);
-           registerDetails();
+            registerDetails();
 
         }
 
@@ -146,7 +146,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             String cityname  =  edtCity.getText().toString().trim();
             String pincode =edtPinCode.getText().toString().trim();
             String mbl = edtMbl.getText().toString().trim();
-            String e_mail = edtE_mail.getText().toString().trim();
+            final String e_mail = edtE_mail.getText().toString().trim();
 
             JSONObject jsonObject = new JSONObject();
             try {
@@ -177,6 +177,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
                                 progressBar.setVisibility(View.GONE);
                                 Intent intent = new Intent(getApplicationContext(),E_MailValidation.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("email",e_mail);
+                                intent.putExtras(bundle);
                                 startActivity(intent);
                             }else
                             {

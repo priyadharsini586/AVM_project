@@ -147,6 +147,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
            /* ldtOtherServices.setVisibility(View.GONE);
             ldtCalibration.setVisibility(View.GONE);*/
 
+        }else if (fromWhere.contains("contact"))
+        {
+            webHome.setVisibility(View.VISIBLE);
+            webHome.loadUrl("file:///android_asset/contact.html");
+            txtToolbarText.setText("Contact Us");
+            webHome.setBackgroundColor(Color.TRANSPARENT);
+            ldtCertification.setVisibility(View.GONE);
+            ldtProgressBar.setVisibility(View.GONE);
+            ldtViewDownload.setVisibility(View.GONE);
         }
 
 

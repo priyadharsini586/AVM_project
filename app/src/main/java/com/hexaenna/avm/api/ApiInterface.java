@@ -34,4 +34,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("verify_email.php")
     Call<Login> validateE_mail(@Field("x") JSONObject verifyRequest);
+
+    @FormUrlEncoded
+    @POST("resend_vcode.php")
+    Call<Login> reSendOTP(@Field("x") JSONObject verifyRequest);
 }

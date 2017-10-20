@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/registration"
+            android:text="@string/download"
             android:textSize="20dp"
             android:textColor="@android:color/white"
             android:textStyle="bold"/>
@@ -43,7 +43,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:weightSum="2"
-            >
+            android:id="@+id/ldtNABL">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:id="@+id/ldtLABCat">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,7 +110,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:id="@+id/ldtAVMSinglePage">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -128,7 +130,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/page_catlogue"
-                android:gravity="center"
                 android:textColor="@color/primary"
                 android:padding="10dp"
                 android:textSize="17sp"/>
@@ -145,7 +146,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1.7"
-        android:gravity="center">
+        android:gravity="center"
+        android:id="@+id/ldtCalibrationWheel">
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -158,7 +160,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wheel_brochure"
-                android:gravity="center"
                 android:textColor="@color/primary"
                 android:padding="10dp"
                 android:textSize="17sp"/>
@@ -170,9 +171,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:gravity="center"
+            android:id="@+id/ldtProgressDownload">
             <ProgressBar
-                android:id="@+id/progressBarPercen"
+                android:id="@+id/progressDownload"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -181,6 +183,17 @@
                 android:minWidth="200dp"
                 android:progress="1"
                 />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:textColor="@color/primary_dark"
+                android:id="@+id/txtPercentage"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

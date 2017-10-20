@@ -62,7 +62,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:id="@+id/edtOTP"/>
+                android:id="@+id/edtOTP"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -73,7 +74,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ldtResendOTP">
+                android:id="@+id/ldtResendOTP"
+                android:padding="5dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,5 +115,5 @@
         android:max="100"
         android:layout_gravity="center"
         android:layout_centerInParent="true"
-        android:visibility="gone"/>
+       />
 </RelativeLayout>

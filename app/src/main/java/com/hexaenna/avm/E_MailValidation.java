@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.hexaenna.avm.api.ApiClient;
@@ -38,11 +40,12 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
     Button btnSendOTP;
     EditText edtSendOTP;
     NetworkChangeReceiver networkChangeReceiver;
-    String isConnection = null;
+    String isConnection = null,e_mail  = null;
     TSnackbar snackbar;
     View snackbarView;
     ApiInterface apiInterface;
     RelativeLayout rldMainE_mail;
+    LinearLayout ldtResendOTP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,10 +72,11 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
 
 
         progressBarOTP = (ProgressBar) findViewById(R.id.progressOtp);
+        progressBarOTP.setVisibility(View.GONE);
 
         Bundle bundle = this.getIntent().getExtras();
         if (bundle.getString("email") != null) {
-            String b = bundle.getString("email");
+            e_mail = bundle.getString("email");
         }
 
         btnSendOTP = (Button) findViewById(R.id.btnSubmit);
@@ -80,6 +84,9 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
 
         edtSendOTP = (EditText) findViewById(R.id.edtOTP);
         rldMainE_mail = (RelativeLayout) findViewById(R.id.rldMainE_mail);
+
+        ldtResendOTP = (LinearLayout) findViewById(R.id.ldtResendOTP);
+        ldtResendOTP.setOnClickListener(this);
     }
 
     @Override
@@ -89,8 +96,76 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
             case R.id.btnSubmit:
                 sendOTP();
                 break;
+
+            case R.id.ldtResendOTP:
+                resendOtp();
+                break;
         }
 
+    }
+
+    private void resendOtp() {
+
+        progressBarOTP.setVisibility(View.VISIBLE);
+        if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
+//            Log.e("djjkdfdhd",e_mail);
+            apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("email",e_mail);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            Call<Login> call = apiInterface.reSendOTP(jsonObject);
+            call.enqueue(new Callback<Login>() {
+                @Override
+                public void onResponse(Call<Login> call, Response<Login> response) {
+                    if (response.isSuccessful()) {
+                        progressBarOTP.setVisibility(View.GONE);
+                        Login login = response.body();
+                        if (login.getStatus_code() != null)
+                        {
+                            if (login.getStatus_code().equals(Constants.status_code1))
+                            {
+                                Toast.makeText(getApplicationContext(),"Verification Email sent successfully !", Toast.LENGTH_LONG).show();
+
+                            }else if (login.getStatus_code().equals(Constants.status_code0))
+                            {
+                                Toast.makeText(getApplicationContext(),"Verification Email Not sent !", Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Login> call, Throwable t) {
+                    Log.e("output", t.getMessage());
+                }
+            });
+
+        }else
+        {
+            snackbar = TSnackbar
+                    .make(rldMainE_mail, "No Internet Connection !", TSnackbar.LENGTH_INDEFINITE)
+                    .setAction("Retry", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Log.d("Action Button", "onClick triggered");
+
+                        }
+                    });
+            snackbar.setActionTextColor(Color.parseColor("#4ecc00"));
+            snackbarView = snackbar.getView();
+            snackbarView.setBackgroundColor(Color.parseColor("#E43F3F"));
+            TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+            textView.setTextColor(Color.YELLOW);
+            textView.setTypeface(null, Typeface.BOLD);
+            snackbar.show();
+        }
     }
 
 
@@ -98,6 +173,7 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
     {
         if (!edtSendOTP.getText().toString().trim().isEmpty())
         {
+            progressBarOTP.setVisibility(View.VISIBLE);
             checkServer();
         }else
         {
@@ -107,15 +183,14 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
 
     private void checkServer() {
 
-
         if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
 //            Log.e("djjkdfdhd",e_mail);
             apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("email","user2@gmail.com");
-                jsonObject.put("verify_code","4906");
+                jsonObject.put("email",e_mail);
+                jsonObject.put("verify_code",edtSendOTP.getText().toString().trim());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -127,10 +202,19 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
                     if (response.isSuccessful()) {
                         Login login = response.body();
 
+                        progressBarOTP.setVisibility(View.GONE);
                         if (login.getStatus_code() != null)
                         {
+                            if (login.getStatus_code().equals(Constants.status_code1))
+                            {
+                                Intent intent = new Intent(getApplicationContext(),CollectionRequest.class);
+                                startActivity(intent);
+                                E_MailValidation.this.finish();
+                            }else if (login.getStatus_code().equals(Constants.status_code0))
+                            {
+                                Toast.makeText(getApplicationContext(),"Invalid Otp !", Toast.LENGTH_LONG).show();
 
-                            Log.e("output from e_mail", login.getStatus_message());
+                            }
 
                         }
 
@@ -193,5 +277,11 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
                 }
             }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(networkChangeReceiver);
     }
 }

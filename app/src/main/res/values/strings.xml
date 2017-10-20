@@ -67,7 +67,8 @@
 
     <string name="downloads_of_avm_labs">Downloads of AVM Labs</string>
     <string name="downloads_nabl">Download NABL CERTIFICATION</string>
-    <string name="lab_catlogue">2017 AVM LAB Catalouge</string>
+    <string name="lab_catlogue">2017 AVM LAB Catalouge`</string>
     <string name="page_catlogue">2017 AVM LAB Single Page Catalouge</string>
     <string name="wheel_brochure">2017 AVM LAB Calibration on Wheels Brochure</string>
+
 </resources>

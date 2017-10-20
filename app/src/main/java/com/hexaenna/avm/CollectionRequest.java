@@ -116,6 +116,8 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
                         break;
                     case R.id.nav_collection_request:
                         navView.getMenu().getItem(6).setChecked(true);
+                        Intent collectionIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                        startActivity(collectionIntent);
                         break;
                     case R.id.nav_onsite_request:
                         navView.getMenu().getItem(7).setChecked(true);
@@ -133,7 +135,10 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
                         break;
                     case R.id.nav_contact_us:
                         navView.getMenu().getItem(11).setChecked(true);
+                        intent.putExtra("where","contact");
+                        startActivity(intent);
                         break;
+
                 }
                 return false;
             }
@@ -198,6 +203,16 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
             case R.id.ldtDownload:
                 Intent downloadIntent = new Intent(getApplicationContext(),DownloadActivity.class);
                 startActivity(downloadIntent);
+                break;
+
+            case R.id.ldtContactUs:
+                intent.putExtra("where","contact");
+                startActivity(intent);
+                break;
+
+            case R.id.ldtCollectionRequest:
+                Intent collectionIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                startActivity(collectionIntent);
                 break;
         }
     }

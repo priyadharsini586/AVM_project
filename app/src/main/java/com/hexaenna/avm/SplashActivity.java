@@ -167,7 +167,7 @@ public class SplashActivity extends AppCompatActivity {
             final RequestJson requestJson = new RequestJson("user12@gmail.com");
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("email","user2@gmail.com");
+                jsonObject.put("email",e_mail);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -356,7 +356,8 @@ public class SplashActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
 
-        unregisterReceiver(networkChangeReceiver);
+        if (networkChangeReceiver != null)
+            unregisterReceiver(networkChangeReceiver);
     }
 
     public void onResume() {
