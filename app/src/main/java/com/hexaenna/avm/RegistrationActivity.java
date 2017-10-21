@@ -155,7 +155,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 jsonObject.put("city",cityname);
                 jsonObject.put("pincode",pincode);
                 jsonObject.put("mobile",mbl);
-                jsonObject.put("email","user@gmail.com");
+                jsonObject.put("email",edtE_mail.getText().toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -508,6 +508,20 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                     snackbar.dismiss();
                 }
             }
+        }
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (networkChangeReceiver == null)
+        {
+            Log.e("reg","Do not unregister receiver as it was never registered");
+        }
+        else
+        {
+            Log.e("reg","Unregister receiver");
+            unregisterReceiver(networkChangeReceiver);
+            networkChangeReceiver = null;
         }
     }
 }

@@ -29,7 +29,7 @@ public interface ApiInterface {
     Call<Login> checkEmail(@Field("x") JSONObject email);
 
     @FormUrlEncoded
-    @POST("register.php")
+    @POST("register1.php")
     Call<Login> registerDetails(@Field("x") JSONObject registerRequest);
 
     @FormUrlEncoded

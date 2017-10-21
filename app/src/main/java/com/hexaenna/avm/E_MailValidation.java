@@ -279,9 +279,24 @@ public class E_MailValidation extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    @Override
+   /* @Override
     protected void onPause() {
         super.onPause();
         unregisterReceiver(networkChangeReceiver);
+    }
+*/
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (networkChangeReceiver == null)
+        {
+            Log.e("reg","Do not unregister receiver as it was never registered");
+        }
+        else
+        {
+            Log.e("reg","Unregister receiver");
+            unregisterReceiver(networkChangeReceiver);
+            networkChangeReceiver = null;
+        }
     }
 }

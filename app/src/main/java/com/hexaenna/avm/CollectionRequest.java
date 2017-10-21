@@ -260,4 +260,6 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
         super.onRestart();
         Log.e("onRestart","OnRestart");
     }
+
+
 }

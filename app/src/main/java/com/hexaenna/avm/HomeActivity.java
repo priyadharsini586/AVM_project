@@ -384,4 +384,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private boolean canAskPermission() {
         return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);
     }
+
+
 }

@@ -108,9 +108,18 @@ public class SplashActivity extends AppCompatActivity {
         if (permissionsToRequest.size() > 0) {
             requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
                     ALL_PERMISSIONS_RESULT);
+            if (isConnection != null) {
+                if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
+                    if (snackbar != null) {
+                        snackbar.dismiss();
+                    }
+                    checkEmail();
+                }
+            }
         } else {
 //            Toast.makeText(getApplicationContext(),"Permissions already granted.", Toast.LENGTH_LONG).show();
             getE_mail();
+
 
         }
 
@@ -149,7 +158,7 @@ public class SplashActivity extends AppCompatActivity {
                 {
                     snackbar.dismiss();
                 }
-                checkEmail();
+
             }
         }
 
@@ -159,98 +168,95 @@ public class SplashActivity extends AppCompatActivity {
 
     private void checkEmail() {
 
-        if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
-            final String e_mail = getE_mail();
+        if (isConnection != null) {
+            if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
+                final String e_mail = getE_mail();
 //            Log.e("djjkdfdhd",e_mail);
-            apiInterface = ApiClient.getClient().create(ApiInterface.class);
+                apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-            final RequestJson requestJson = new RequestJson("user12@gmail.com");
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("email","user@gmail.com");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+                final RequestJson requestJson = new RequestJson("user12@gmail.com");
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("email", e_mail);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-            Call<Login> call = apiInterface.checkEmail(jsonObject);
-            call.enqueue(new Callback<Login>() {
-                @Override
-                public void onResponse(Call<Login> call, Response<Login> response) {
-                    if (response.isSuccessful()) {
-                        Login login = response.body();
+                Call<Login> call = apiInterface.checkEmail(jsonObject);
+                call.enqueue(new Callback<Login>() {
+                    @Override
+                    public void onResponse(Call<Login> call, Response<Login> response) {
+                        if (response.isSuccessful()) {
+                            Login login = response.body();
 
-                        if (login.getStatus_code() != null)
-                        {
+                            if (login.getStatus_code() != null) {
 
-                            Log.e("output from splash", login.getStatus_message());
-                            if (login.getStatus_code().equals(Constants.status_code0))
-                            {
+                                Log.e("output from splash", login.getStatus_message());
+                                if (login.getStatus_code().equals(Constants.status_code0)) {
 
-                            new Handler().postDelayed(new Runnable(){
-                            @Override
-                            public void run() {
-                                Intent mainIntent = new Intent(SplashActivity.this,RegistrationActivity.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("email",e_mail);
-                                mainIntent.putExtras(bundle);
-                                SplashActivity.this.startActivity(mainIntent);
-                                SplashActivity.this.finish();
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent mainIntent = new Intent(SplashActivity.this, RegistrationActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("email", e_mail);
+                                            mainIntent.putExtras(bundle);
+                                            SplashActivity.this.startActivity(mainIntent);
+                                            SplashActivity.this.finish();
+                                        }
+                                    }, SPLASH_DISPLAY_LENGTH);
+                                } else if (login.getStatus_code().equals(Constants.status_code_1)) {
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent mainIntent = new Intent(SplashActivity.this, E_MailValidation.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("email", e_mail);
+                                            mainIntent.putExtras(bundle);
+                                            SplashActivity.this.startActivity(mainIntent);
+                                            SplashActivity.this.finish();
+                                        }
+                                    }, SPLASH_DISPLAY_LENGTH);
+
+                                } else if (login.getStatus_code().equals(Constants.status_code1)) {
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent mainIntent = new Intent(SplashActivity.this, CollectionRequest.class);
+                                            SplashActivity.this.startActivity(mainIntent);
+                                            SplashActivity.this.finish();
+                                        }
+                                    }, SPLASH_DISPLAY_LENGTH);
                                 }
-                            }, SPLASH_DISPLAY_LENGTH);
-                            }else if (login.getStatus_code().equals(Constants.status_code_1))
-                            {
-                                new Handler().postDelayed(new Runnable(){
-                                    @Override
-                                    public void run() {
-                                        Intent mainIntent = new Intent(SplashActivity.this, E_MailValidation.class);
-                                        Bundle bundle = new Bundle();
-                                        bundle.putString("email",e_mail);
-                                        mainIntent.putExtras(bundle);
-                                        SplashActivity.this.startActivity(mainIntent);
-                                        SplashActivity.this.finish();
-                                    }
-                                }, SPLASH_DISPLAY_LENGTH);
-
-                            }else if (login.getStatus_code().equals(Constants.status_code1))
-                            {
-                                new Handler().postDelayed(new Runnable(){
-                                    @Override
-                                    public void run() {
-                                        Intent mainIntent = new Intent(SplashActivity.this, CollectionRequest.class);
-                                        SplashActivity.this.startActivity(mainIntent);
-                                        SplashActivity.this.finish();
-                                    }
-                                }, SPLASH_DISPLAY_LENGTH);
                             }
-                        }
 
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<Login> call, Throwable t) {
-                    Log.e("output", t.getMessage());
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Login> call, Throwable t) {
+                        Log.e("output", t.getMessage());
+                    }
+                });
 
-        }else
-        {
-            snackbar = TSnackbar
-                    .make(rldMainLayout, "No Internet Connection !", TSnackbar.LENGTH_INDEFINITE)
-                    .setAction("Retry", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Log.d("Action Button", "onClick triggered");
-                            checkEmail();
-                        }
-                    });
-            snackbar.setActionTextColor(Color.parseColor("#4ecc00"));
-            snackbarView = snackbar.getView();
-            snackbarView.setBackgroundColor(Color.parseColor("#E43F3F"));
-            TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
-            textView.setTextColor(Color.YELLOW);
-            textView.setTypeface(null, Typeface.BOLD);
-            snackbar.show();
+            } else {
+                snackbar = TSnackbar
+                        .make(rldMainLayout, "No Internet Connection !", TSnackbar.LENGTH_INDEFINITE)
+                        .setAction("Retry", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Log.d("Action Button", "onClick triggered");
+                                checkEmail();
+                            }
+                        });
+                snackbar.setActionTextColor(Color.parseColor("#4ecc00"));
+                snackbarView = snackbar.getView();
+                snackbarView.setBackgroundColor(Color.parseColor("#E43F3F"));
+                TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+                textView.setTextColor(Color.YELLOW);
+                textView.setTypeface(null, Typeface.BOLD);
+                snackbar.show();
+            }
         }
     }
 
@@ -297,6 +303,7 @@ public class SplashActivity extends AppCompatActivity {
                 } else {
                     getE_mail();
                     Toast.makeText(getApplicationContext(), "Permissions garanted.", Toast.LENGTH_LONG).show();
+                    checkEmail();
                 }
                 break;
         }
@@ -356,17 +363,33 @@ public class SplashActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
 
-        if (networkChangeReceiver != null)
-            unregisterReceiver(networkChangeReceiver);
+       /* if (networkChangeReceiver != null)
+            unregisterReceiver(networkChangeReceiver);*/
     }
 
     public void onResume() {
         super.onResume();
         Log.e("e_mail","onResume");
+
      /*   IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         intentFilter.addAction(Constants.BROADCAST);
         this.registerReceiver(networkChangeReceiver,
                 intentFilter);*/
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (networkChangeReceiver == null)
+        {
+            Log.e("reg","Do not unregister receiver as it was never registered");
+        }
+        else
+        {
+            Log.e("reg","Unregister receiver");
+           unregisterReceiver(networkChangeReceiver);
+            networkChangeReceiver = null;
+        }
     }
 }
