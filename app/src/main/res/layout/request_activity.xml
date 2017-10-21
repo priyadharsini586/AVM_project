@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/avmg"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,7 +67,8 @@
                     android:padding="3dp"
                     app:errorTextAppearance="@style/error_appearance1"
                     android:layout_gravity="center"
-                    android:gravity="center">
+                    android:gravity="center"
+                    >
 
                     <EditText
                         android:id="@+id/edtName"
@@ -72,7 +77,8 @@
                         android:hint="@string/name_small"
                         android:inputType="textCapWords"
                         android:layout_gravity="center"
-                        android:textColor="#323232"/>
+                        android:textColor="#323232"
+                        android:textSize="13sp"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -120,7 +126,8 @@
                         android:hint="@string/company_small"
                         android:inputType="textCapWords"
                         android:layout_gravity="center"
-                        android:textColor="#323232"/>
+                        android:textColor="#323232"
+                        android:textSize="13sp"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -170,7 +177,8 @@
                         android:layout_gravity="center"
                         android:textColor="#323232"
                         android:id="@+id/edtMbl"
-                        android:maxLength="10"/>
+                        android:maxLength="10"
+                        android:textSize="13sp"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -219,7 +227,8 @@
                         android:inputType="textCapWords"
                         android:layout_gravity="center"
                         android:textColor="#323232"
-                        android:id="@+id/edtE_mail"/>
+                        android:id="@+id/edtE_mail"
+                        android:textSize="13sp"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -267,7 +276,8 @@
                         android:inputType="textCapWords"
                         android:layout_gravity="center"
                         android:textColor="#323232"
-                        android:id="@+id/edtlocation"/>
+                        android:id="@+id/edtlocation"
+                        android:textSize="13sp"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -316,7 +326,8 @@
                         android:layout_gravity="center"
                         android:textColor="#323232"
                         android:id="@+id/edtpincode"
-                        android:maxLength="6"/>
+                        android:maxLength="6"
+                        android:textSize="13sp"/>
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
@@ -338,4 +349,5 @@
                 android:id="@+id/btnSubmit"/>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

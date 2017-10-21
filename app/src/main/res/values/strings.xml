@@ -2,7 +2,7 @@
     <string name="app_name">AVM</string>
     <string name="registration">Registration</string>
     <string name="name">Name</string>
-    <string name="name_small">name  </string>
+    <string name="name_small">name</string>
     <string name="company_name">Company Name</string>
     <string name="company_small">company name  </string>
     <string name="city">City</string>

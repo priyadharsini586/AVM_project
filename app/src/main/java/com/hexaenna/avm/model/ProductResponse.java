@@ -11,6 +11,7 @@ public class ProductResponse {
     public String status_code,image_path,success;
 
     public ArrayList image_array  = new ArrayList();
+    public ArrayList<String> image_name_array  = new ArrayList();
 
     public String getStatus_code() {
         return status_code;
@@ -42,5 +43,13 @@ public class ProductResponse {
 
     public void setImage_array(ArrayList image_array) {
         this.image_array = image_array;
+    }
+
+    public ArrayList<String> getName_array() {
+        return image_name_array;
+    }
+
+    public void setName_array(ArrayList<String> name_array) {
+        this.image_name_array = name_array;
     }
 }

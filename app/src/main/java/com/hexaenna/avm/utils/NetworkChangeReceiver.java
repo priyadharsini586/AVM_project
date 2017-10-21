@@ -35,7 +35,7 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
 
             if (currentNetworkInfo.isConnected()) {
                 networkConnection = Constants.NETWORK_CONNECTED;
-                Toast.makeText(context, "Connected", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Connected", Toast.LENGTH_SHORT).show();
             } else {
                 networkConnection = Constants.NETWORK_NOT_CONNECTED;
                 Toast.makeText(context, "Please Check your Network connection", Toast.LENGTH_SHORT).show();

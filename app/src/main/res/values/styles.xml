@@ -21,7 +21,7 @@
         <item name="colorControlNormal">@color/iron</item>
         <item name="colorControlActivated">@color/primary</item>
         <item name="colorControlHighlight">@color/white</item>
-        <item name="android:textColorHint">#4c4c4c</item>
+        <item name="android:textColorHint">#7f7f7f</item>
 
         <item name="colorButtonNormal">@color/primary_darker</item>
         <item name="android:colorButtonNormal">@color/primary_darker</item>
@@ -68,5 +68,8 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">true</item>
+    </style>
+    <style name="TextLabel" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">10sp</item>
     </style>
 </resources>

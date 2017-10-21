@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -20,6 +21,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.hexaenna.avm.api.ApiClient;
@@ -76,7 +78,7 @@ public class RequestActivity extends AppCompatActivity implements View.OnClickLi
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         intentFilter.addAction(Constants.BROADCAST);
-        this.registerReceiver(networkChangeReceiver,
+          this.registerReceiver(networkChangeReceiver,
                 intentFilter);
 
         Bundle extrasBundle = getIntent().getExtras();
@@ -246,7 +248,11 @@ public class RequestActivity extends AppCompatActivity implements View.OnClickLi
 
                         if (login.getStatus_code() != null)
                         {
+                            if (login.getStatus_code().equals(Constants.status_code1)) {
+                                Toast.makeText(getApplicationContext(),"Request has been sent.",Toast.LENGTH_LONG).show();
+                                RequestActivity.this.finish();
 
+                            }
                         }
 
                     }
@@ -312,4 +318,18 @@ public class RequestActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (networkChangeReceiver == null)
+        {
+            Log.e("reg","Do not unregister receiver as it was never registered");
+        }
+        else
+        {
+            Log.e("reg","Unregister receiver");
+            unregisterReceiver(networkChangeReceiver);
+            networkChangeReceiver = null;
+        }
+    }
 }

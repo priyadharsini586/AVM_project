@@ -34,11 +34,13 @@ public class GridViewAdapter extends BaseAdapter {
 
     //Array List that would contain the urls and the titles for the images
     private ArrayList<String> images;
+    private ArrayList<String> names;
 
-    public GridViewAdapter (Context context, ArrayList<String> images){
+    public GridViewAdapter (Context context, ArrayList<String> images,ArrayList<String> name){
         //Getting all the values
         this.context = context;
         this.images = images;
+        this.names = name;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -92,12 +94,14 @@ public class GridViewAdapter extends BaseAdapter {
 
         rowView = inflater.inflate(R.layout.grid_view_item, null);
         holder.img=(NetworkImageView) rowView.findViewById(R.id.imgNetwork);
+        holder.textView = (TextView) rowView.findViewById(R.id.txtname) ;
 
         imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
         imageLoader.get(images.get(position), ImageLoader.getImageListener(holder.img, R.mipmap.ic_launcher, android.R.drawable.ic_dialog_alert));
 
         //Setting the image url to load
         holder.img.setImageUrl(images.get(position),imageLoader);
+        holder.textView.setText(names.get(position));
 
         return rowView;
     }
@@ -106,6 +110,7 @@ public class GridViewAdapter extends BaseAdapter {
     {
 
         NetworkImageView img;
+        TextView textView;
     }
 
 }

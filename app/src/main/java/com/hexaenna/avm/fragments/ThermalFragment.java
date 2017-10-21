@@ -62,7 +62,7 @@ public class ThermalFragment extends android.support.v4.app.Fragment {
     NetworkChangeReceiver networkChangeReceiver;
     View mainView;
     GridView gridView;
-    ArrayList imageUrl = new ArrayList();
+    ArrayList imageUrl;
     public ThermalFragment() {
         // Required empty public constructor
     }
@@ -214,19 +214,22 @@ public class ThermalFragment extends android.support.v4.app.Fragment {
                             ProductResponse login = response.body();
 
                             if (login.getStatus_code() != null) {
+                                if (login.getStatus_code().equals(Constants.status_code1)) {
+                                    imageUrl = new ArrayList();
+                                    Log.e("output from splash", String.valueOf(login.getImage_array()));
+                                    ArrayList dumyArraylist = login.getImage_array();
+                                    for (int i = 0; i < dumyArraylist.size(); i++) {
+                                        String url = (String) dumyArraylist.get(i);
+                                        imageUrl.add(login.getImage_path() + url);
+                                    }
 
-                                Log.e("output from splash", String.valueOf(login.getImage_array()));
-                                ArrayList dumyArraylist = login.getImage_array();
-                                for (int i=0 ; i < dumyArraylist.size() ; i ++)
-                                {
-                                    String url = (String) dumyArraylist.get(i);
-                                    imageUrl.add(login.getImage_path()+url);
+                                    Log.e("therma size", String.valueOf(imageUrl.size()) + "," + String.valueOf(login.getName_array()));
+
+                                    GridViewAdapter gridViewAdapter = new GridViewAdapter(getActivity(), imageUrl, login.getName_array());
+
+                                    //Adding adapter to gridview
+                                    gridView.setAdapter(gridViewAdapter);
                                 }
-
-                                GridViewAdapter gridViewAdapter = new GridViewAdapter(getActivity(),imageUrl);
-
-                                //Adding adapter to gridview
-                                gridView.setAdapter(gridViewAdapter);
                             }
 
                         }
