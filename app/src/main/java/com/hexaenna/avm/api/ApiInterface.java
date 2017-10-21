@@ -3,6 +3,7 @@ package com.hexaenna.avm.api;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.hexaenna.avm.model.Login;
+import com.hexaenna.avm.model.ProductResponse;
 import com.hexaenna.avm.model.RegisterRequest;
 import com.hexaenna.avm.model.RequestJson;
 
@@ -38,4 +39,14 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("resend_vcode.php")
     Call<Login> reSendOTP(@Field("x") JSONObject verifyRequest);
+
+    @FormUrlEncoded
+    @POST("request.php")
+    Call<Login> request(@Field("x") JSONObject verifyRequest);
+
+
+    @FormUrlEncoded
+    @POST("product_details.php")
+    Call<ProductResponse> productRequest(@Field("x") JSONObject verifyRequest);
+
 }

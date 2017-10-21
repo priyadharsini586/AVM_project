@@ -155,7 +155,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 jsonObject.put("city",cityname);
                 jsonObject.put("pincode",pincode);
                 jsonObject.put("mobile",mbl);
-                jsonObject.put("email",e_mail);
+                jsonObject.put("email","user@gmail.com");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

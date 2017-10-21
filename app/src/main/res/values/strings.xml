@@ -2,12 +2,19 @@
     <string name="app_name">AVM</string>
     <string name="registration">Registration</string>
     <string name="name">Name</string>
+    <string name="name_small">name  </string>
     <string name="company_name">Company Name</string>
+    <string name="company_small">company name  </string>
     <string name="city">City</string>
     <string name="pin_code">Pin code</string>
+    <string name="pin_code_small">pin code</string>
     <string name="mbl_number">Mobile Number</string>
+    <string name="mbl_number_small">mobile number</string>
     <string name="e_mail">E-Mail</string>
+    <string name="e_mail_small">e_mail</string>
     <string name="register">Register</string>
+    <string name="location">Location</string>
+    <string name="location_small">location</string>
 
     <string name="home">Home</string>
     <string name="certification">Certification</string>
@@ -70,5 +77,8 @@
     <string name="lab_catlogue">2017 AVM LAB Catalouge`</string>
     <string name="page_catlogue">2017 AVM LAB Single Page Catalouge</string>
     <string name="wheel_brochure">2017 AVM LAB Calibration on Wheels Brochure</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

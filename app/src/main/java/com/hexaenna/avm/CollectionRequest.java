@@ -117,16 +117,25 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
                     case R.id.nav_collection_request:
                         navView.getMenu().getItem(6).setChecked(true);
                         Intent collectionIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                        collectionIntent.putExtra("wherefrom","Collection");
                         startActivity(collectionIntent);
                         break;
                     case R.id.nav_onsite_request:
                         navView.getMenu().getItem(7).setChecked(true);
+                        Intent onsiteIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                        onsiteIntent.putExtra("wherefrom","Onsite");
+                        startActivity(onsiteIntent);
                         break;
                     case R.id.nav_mblClaibration:
                         navView.getMenu().getItem(8).setChecked(true);
+                        Intent mblIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                        mblIntent.putExtra("wherefrom","Mobile");
+                        startActivity(mblIntent);
                         break;
                     case R.id.nav_product:
                         navView.getMenu().getItem(9).setChecked(true);
+                        Intent productIntent = new Intent(getApplicationContext(),ProductActivity.class);
+                        startActivity(productIntent);
                         break;
                     case R.id.nav_download:
                         navView.getMenu().getItem(10).setChecked(true);
@@ -212,7 +221,25 @@ public class CollectionRequest extends AppCompatActivity implements View.OnClick
 
             case R.id.ldtCollectionRequest:
                 Intent collectionIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                collectionIntent.putExtra("wherefrom","Collection");
                 startActivity(collectionIntent);
+                break;
+
+            case R.id.ldtOnsiteRequest:
+                Intent onsiteIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                onsiteIntent.putExtra("wherefrom","Onsite");
+                startActivity(onsiteIntent);
+                break;
+
+            case R.id.ldtmblCalibration:
+                Intent mblIntent = new Intent(getApplicationContext(),RequestActivity.class);
+                mblIntent.putExtra("wherefrom","Mobile");
+                startActivity(mblIntent);
+                break;
+
+            case R.id.ldtProduct:
+                Intent productIntent = new Intent(getApplicationContext(),ProductActivity.class);
+                startActivity(productIntent);
                 break;
         }
     }

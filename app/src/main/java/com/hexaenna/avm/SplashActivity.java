@@ -167,7 +167,7 @@ public class SplashActivity extends AppCompatActivity {
             final RequestJson requestJson = new RequestJson("user12@gmail.com");
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("email",e_mail);
+                jsonObject.put("email","user@gmail.com");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
