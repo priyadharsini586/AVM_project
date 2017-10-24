@@ -99,8 +99,8 @@ public class SplashActivity extends AppCompatActivity {
 //        imgSplash.startAnimation(imgAnimation);
 
 
-
-
+        permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         permissions.add(Manifest.permission.GET_ACCOUNTS);
         permissionsToRequest = findUnAskedPermissions(permissions);
 
@@ -113,12 +113,14 @@ public class SplashActivity extends AppCompatActivity {
                     if (snackbar != null) {
                         snackbar.dismiss();
                     }
-                    checkEmail();
+
                 }
             }
         } else {
 //            Toast.makeText(getApplicationContext(),"Permissions already granted.", Toast.LENGTH_LONG).show();
+            Log.e("newmesage", "already granted");
             getE_mail();
+            checkEmail();
 
 
         }
@@ -139,7 +141,7 @@ public class SplashActivity extends AppCompatActivity {
                         .setAction("Retry", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Log.d("Action Button", "onClick triggered");
+                                Log.e("Action Button", "onClick triggered");
                                 checkEmail();
                             }
                         });
@@ -149,6 +151,7 @@ public class SplashActivity extends AppCompatActivity {
                 TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
                 textView.setTextColor(Color.YELLOW);
                 textView.setTypeface(null, Typeface.BOLD);
+                Log.e("show","show in getnetwork");
                 snackbar.show();
 
 
@@ -158,6 +161,10 @@ public class SplashActivity extends AppCompatActivity {
                 {
                     snackbar.dismiss();
                 }
+
+                    Log.e("newmesage", "connection connected");
+                if (getE_mail() != null)
+                    checkEmail();
 
             }
         }
@@ -172,91 +179,92 @@ public class SplashActivity extends AppCompatActivity {
             if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
                 final String e_mail = getE_mail();
 //            Log.e("djjkdfdhd",e_mail);
-                apiInterface = ApiClient.getClient().create(ApiInterface.class);
+                    apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-                final RequestJson requestJson = new RequestJson("user12@gmail.com");
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("email", e_mail);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                    final RequestJson requestJson = new RequestJson("user12@gmail.com");
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("email", e_mail);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                Call<Login> call = apiInterface.checkEmail(jsonObject);
-                call.enqueue(new Callback<Login>() {
-                    @Override
-                    public void onResponse(Call<Login> call, Response<Login> response) {
-                        if (response.isSuccessful()) {
-                            Login login = response.body();
+                    Call<Login> call = apiInterface.checkEmail(jsonObject);
+                    call.enqueue(new Callback<Login>() {
+                        @Override
+                        public void onResponse(Call<Login> call, Response<Login> response) {
+                            if (response.isSuccessful()) {
+                                Login login = response.body();
 
-                            if (login.getStatus_code() != null) {
+                                if (login.getStatus_code() != null) {
 
-                                Log.e("output from splash", login.getStatus_message());
-                                if (login.getStatus_code().equals(Constants.status_code0)) {
+                                    Log.e("output from splash", login.getStatus_message());
+                                    if (login.getStatus_code().equals(Constants.status_code0)) {
 
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Intent mainIntent = new Intent(SplashActivity.this, RegistrationActivity.class);
-                                            Bundle bundle = new Bundle();
-                                            bundle.putString("email", e_mail);
-                                            mainIntent.putExtras(bundle);
-                                            SplashActivity.this.startActivity(mainIntent);
-                                            SplashActivity.this.finish();
-                                        }
-                                    }, SPLASH_DISPLAY_LENGTH);
-                                } else if (login.getStatus_code().equals(Constants.status_code_1)) {
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Intent mainIntent = new Intent(SplashActivity.this, E_MailValidation.class);
-                                            Bundle bundle = new Bundle();
-                                            bundle.putString("email", e_mail);
-                                            mainIntent.putExtras(bundle);
-                                            SplashActivity.this.startActivity(mainIntent);
-                                            SplashActivity.this.finish();
-                                        }
-                                    }, SPLASH_DISPLAY_LENGTH);
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent mainIntent = new Intent(SplashActivity.this, RegistrationActivity.class);
+                                                Bundle bundle = new Bundle();
+                                                bundle.putString("email", e_mail);
+                                                mainIntent.putExtras(bundle);
+                                                SplashActivity.this.startActivity(mainIntent);
+                                                SplashActivity.this.finish();
+                                            }
+                                        }, SPLASH_DISPLAY_LENGTH);
+                                    } else if (login.getStatus_code().equals(Constants.status_code_1)) {
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent mainIntent = new Intent(SplashActivity.this, E_MailValidation.class);
+                                                Bundle bundle = new Bundle();
+                                                bundle.putString("email", e_mail);
+                                                mainIntent.putExtras(bundle);
+                                                SplashActivity.this.startActivity(mainIntent);
+                                                SplashActivity.this.finish();
+                                            }
+                                        }, SPLASH_DISPLAY_LENGTH);
 
-                                } else if (login.getStatus_code().equals(Constants.status_code1)) {
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Intent mainIntent = new Intent(SplashActivity.this, CollectionRequest.class);
-                                            SplashActivity.this.startActivity(mainIntent);
-                                            SplashActivity.this.finish();
-                                        }
-                                    }, SPLASH_DISPLAY_LENGTH);
+                                    } else if (login.getStatus_code().equals(Constants.status_code1)) {
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent mainIntent = new Intent(SplashActivity.this, CollectionRequest.class);
+                                                SplashActivity.this.startActivity(mainIntent);
+                                                SplashActivity.this.finish();
+                                            }
+                                        }, SPLASH_DISPLAY_LENGTH);
+                                    }
                                 }
-                            }
 
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Login> call, Throwable t) {
-                        Log.e("output", t.getMessage());
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Login> call, Throwable t) {
+                            Log.e("output", t.getMessage());
+                        }
+                    });
 
-            } else {
-                snackbar = TSnackbar
-                        .make(rldMainLayout, "No Internet Connection !", TSnackbar.LENGTH_INDEFINITE)
-                        .setAction("Retry", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Log.d("Action Button", "onClick triggered");
-                                checkEmail();
-                            }
-                        });
-                snackbar.setActionTextColor(Color.parseColor("#4ecc00"));
-                snackbarView = snackbar.getView();
-                snackbarView.setBackgroundColor(Color.parseColor("#E43F3F"));
-                TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
-                textView.setTextColor(Color.YELLOW);
-                textView.setTypeface(null, Typeface.BOLD);
-                snackbar.show();
-            }
+                } else {
+                    snackbar = TSnackbar
+                            .make(rldMainLayout, "No Internet Connection !", TSnackbar.LENGTH_INDEFINITE)
+                            .setAction("Retry", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Log.e("Action Button", "onClick triggered");
+                                    checkEmail();
+                                }
+                            });
+                    snackbar.setActionTextColor(Color.parseColor("#4ecc00"));
+                    snackbarView = snackbar.getView();
+                    snackbarView.setBackgroundColor(Color.parseColor("#E43F3F"));
+                    TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+                    textView.setTextColor(Color.YELLOW);
+                    textView.setTypeface(null, Typeface.BOLD);
+                    Log.e("show","show in checkmail");
+                    snackbar.show();
+                }
         }
     }
 
@@ -264,7 +272,6 @@ public class SplashActivity extends AppCompatActivity {
         ObjectAnimator flip = ObjectAnimator.ofFloat(viewToFlip, "rotationY", 0f, 360f);
         flip.setDuration(2500);
         flip.start();
-
     }
 
 
@@ -294,6 +301,9 @@ public class SplashActivity extends AppCompatActivity {
                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                                 requestPermissions(permissionsRejected.toArray(
                                                         new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
+
+                                                Log.e("ok","ok");
+//                                                checkEmail();
                                             }
                                         }
                                     });
@@ -303,6 +313,8 @@ public class SplashActivity extends AppCompatActivity {
                 } else {
                     getE_mail();
                     Toast.makeText(getApplicationContext(), "Permissions garanted.", Toast.LENGTH_LONG).show();
+                    Log.e("newmesage", "Permissions garanted.");
+
                     checkEmail();
                 }
                 break;
@@ -312,8 +324,15 @@ public class SplashActivity extends AppCompatActivity {
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(SplashActivity.this)
                 .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
+                .setPositiveButton("OK",okListener )
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        finish();
+                    }
+                })
                 .create()
                 .show();
     }
@@ -351,7 +370,6 @@ public class SplashActivity extends AppCompatActivity {
         for (Account account : accounts) {
             if (gmailPattern.matcher(account.name).matches()) {
                 e_mail = account.name;
-
                 break;
 
             }
@@ -362,14 +380,21 @@ public class SplashActivity extends AppCompatActivity {
 
     public void onPause() {
         super.onPause();
+        Log.e("e_mail","onResume");
+        if (snackbar != null)
+            snackbar.dismiss();
 
        /* if (networkChangeReceiver != null)
             unregisterReceiver(networkChangeReceiver);*/
     }
 
+
+
     public void onResume() {
         super.onResume();
         Log.e("e_mail","onResume");
+        flipit(imgSplash);
+        checkEmail();
 
      /*   IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);

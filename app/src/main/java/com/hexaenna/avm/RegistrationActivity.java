@@ -181,6 +181,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                 bundle.putString("email",e_mail);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
+                                finish();
                             }else
                             {
                                 progressBar.setVisibility(View.GONE);

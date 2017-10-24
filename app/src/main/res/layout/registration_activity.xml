@@ -90,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:hint="@string/name" />
+                android:hint="@string/name"
+                />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Email Label -->

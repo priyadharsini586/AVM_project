@@ -61,7 +61,7 @@
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".RequestActivity"
-            android:theme="@style/AppTheme.Dark" />
+            android:theme="@style/AppTheme.Dark1" />
         <activity android:name=".ProductActivity"
             android:theme="@style/AppTheme.Dark" />
     </application>

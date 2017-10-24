@@ -18,10 +18,27 @@
 
         <item name="android:windowBackground">@color/primary</item>
 
-        <item name="colorControlNormal">@color/iron</item>
-        <item name="colorControlActivated">@color/primary</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
         <item name="colorControlHighlight">@color/white</item>
-        <item name="android:textColorHint">#7f7f7f</item>
+        <item name="android:textColorHint">@color/white</item>
+
+        <item name="colorButtonNormal">@color/primary_darker</item>
+        <item name="android:colorButtonNormal">@color/primary_darker</item>
+    </style>
+
+
+    <style name="AppTheme.Dark1" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+
+        <item name="android:windowBackground">@color/primary</item>
+
+        <item name="colorControlNormal">#a8a8a8</item>
+        <item name="colorControlActivated">#a8a8a8</item>
+        <item name="colorControlHighlight">@color/primary</item>
+        <item name="android:textColorHint">#7e7e7e</item>
 
         <item name="colorButtonNormal">@color/primary_darker</item>
         <item name="android:colorButtonNormal">@color/primary_darker</item>

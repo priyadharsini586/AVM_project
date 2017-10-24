@@ -443,5 +443,7 @@
         app:menu="@menu/activity_main_drawer"
         app:theme="@style/ThemeOverlay.AppCompat.Light"
         app:itemBackground="@drawable/nav_item_background"
-        app:itemTextColor="@color/black"/>
+        app:itemTextColor="@color/black"
+        android:scrollbars="vertical"
+       />
 </android.support.v4.widget.DrawerLayout>

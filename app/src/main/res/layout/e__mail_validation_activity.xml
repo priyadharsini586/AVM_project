@@ -100,11 +100,12 @@
             android:layout_height="wrap_content"
             android:text="@string/submit"
             android:layout_gravity="center"
-            android:textColor="@color/primary"
+            android:textColor="@color/white"
             android:textSize="15sp"
-            android:background="@android:color/transparent"
             android:textStyle="bold"
-            android:id="@+id/btnSubmit"/>
+            android:id="@+id/btnSubmit"
+            android:background="@color/primary"
+            />
         </LinearLayout>
     </LinearLayout>
     <ProgressBar
