@@ -237,7 +237,7 @@ public class ThermalFragment extends android.support.v4.app.Fragment {
 
                     @Override
                     public void onFailure(Call<ProductResponse> call, Throwable t) {
-                        Log.e("output", t.getMessage());
+//                        Log.e("output", t.getMessage());
                     }
                 });
 
