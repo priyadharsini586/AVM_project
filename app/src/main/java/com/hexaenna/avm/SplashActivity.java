@@ -105,29 +105,29 @@ public class SplashActivity extends AppCompatActivity {
         permissionsToRequest = findUnAskedPermissions(permissions);
 
 
-        if (permissionsToRequest.size() > 0) {
-            requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
-                    ALL_PERMISSIONS_RESULT);
-            if (isConnection != null) {
-                if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
-                    if (snackbar != null) {
-                        snackbar.dismiss();
-                    }
+        if (Build.VERSION.SDK_INT > 23) {
+            if (permissionsToRequest.size() > 0) {
+                requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
+                        ALL_PERMISSIONS_RESULT);
+                if (isConnection != null) {
+                    if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
+                        if (snackbar != null) {
+                            snackbar.dismiss();
+                        }
 
+                    }
                 }
-            }
-        } else {
+            } else {
 //            Toast.makeText(getApplicationContext(),"Permissions already granted.", Toast.LENGTH_LONG).show();
-            Log.e("newmesage", "already granted");
-            getE_mail();
-            checkEmail();
+                Log.e("newmesage", "already granted");
+                getE_mail();
+                checkEmail();
+
+
+            }
 
 
         }
-
-
-
-
 
 
     }
@@ -312,7 +312,7 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 } else {
                     getE_mail();
-                    Toast.makeText(getApplicationContext(), "Permissions garanted.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Permissions granted.", Toast.LENGTH_LONG).show();
                     Log.e("newmesage", "Permissions garanted.");
 
                     checkEmail();

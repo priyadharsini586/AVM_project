@@ -68,7 +68,7 @@
     <string name="drawer_close">Close</string>
 
     <string name="validate_e_mail">Please check your E-mail.</string>
-    <string name="str1">We have send verification code to your registered E-mail Id</string>
+    <string name="str1">We have sent verification code to your registered E-mail Id</string>
     <string name="allfield">All fields are mandatory</string>
     <string name="submit">SUBMIT</string>
 

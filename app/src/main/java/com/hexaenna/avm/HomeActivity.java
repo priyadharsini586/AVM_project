@@ -163,17 +163,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         permissionsToRequest = findUnAskedPermissions(permissions);
 
+        if (Build.VERSION.SDK_INT > 23) {
 
-        if (permissionsToRequest.size() > 0) {
-            requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
-                    ALL_PERMISSIONS_RESULT);
-        } else {
+            if (permissionsToRequest.size() > 0) {
+                requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
+                        ALL_PERMISSIONS_RESULT);
+            } else {
 //            Toast.makeText(getApplicationContext(),"Permissions already granted.", Toast.LENGTH_LONG).show();
+            }
         }
-        progressBar = (ProgressBar) findViewById(R.id.progressBarPercen);
-        progressBar.setIndeterminate(false);
-        progressBar.setProgress(0);
-        progressBar.setMax(100);
+            progressBar = (ProgressBar) findViewById(R.id.progressBarPercen);
+            progressBar.setIndeterminate(false);
+            progressBar.setProgress(0);
+            progressBar.setMax(100);
 
 
     }
