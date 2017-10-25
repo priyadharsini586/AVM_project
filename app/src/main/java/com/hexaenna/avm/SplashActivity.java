@@ -64,6 +64,7 @@ public class SplashActivity extends AppCompatActivity {
     TSnackbar snackbar;
     View snackbarView;
     NetworkChangeReceiver  networkChangeReceiver;
+    String alreadySend = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,8 +105,9 @@ public class SplashActivity extends AppCompatActivity {
         permissions.add(Manifest.permission.GET_ACCOUNTS);
         permissionsToRequest = findUnAskedPermissions(permissions);
 
+        Log.e("newmesage", String.valueOf(Build.VERSION.SDK_INT));
 
-        if (Build.VERSION.SDK_INT > 23) {
+        if (Build.VERSION.SDK_INT >= 23) {
             if (permissionsToRequest.size() > 0) {
                 requestPermissions(permissionsToRequest.toArray(new String[permissionsToRequest.size()]),
                         ALL_PERMISSIONS_RESULT);
@@ -120,7 +122,7 @@ public class SplashActivity extends AppCompatActivity {
             } else {
 //            Toast.makeText(getApplicationContext(),"Permissions already granted.", Toast.LENGTH_LONG).show();
                 Log.e("newmesage", "already granted");
-                getE_mail();
+//                getE_mail();
                 checkEmail();
 
 
@@ -175,9 +177,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private void checkEmail() {
 
-        if (isConnection != null) {
-            if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
-                final String e_mail = getE_mail();
+        if (alreadySend.equals("")) {
+            if (isConnection != null) {
+                if (isConnection.equals(Constants.NETWORK_CONNECTED)) {
+                    final String e_mail = getE_mail();
+                    alreadySend = "send";
 //            Log.e("djjkdfdhd",e_mail);
                     apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
@@ -262,9 +266,10 @@ public class SplashActivity extends AppCompatActivity {
                     TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
                     textView.setTextColor(Color.YELLOW);
                     textView.setTypeface(null, Typeface.BOLD);
-                    Log.e("show","show in checkmail");
+                    Log.e("show", "show in checkmail");
                     snackbar.show();
                 }
+            }
         }
     }
 
@@ -314,7 +319,6 @@ public class SplashActivity extends AppCompatActivity {
                     getE_mail();
                     Toast.makeText(getApplicationContext(), "Permissions granted.", Toast.LENGTH_LONG).show();
                     Log.e("newmesage", "Permissions garanted.");
-
                     checkEmail();
                 }
                 break;
