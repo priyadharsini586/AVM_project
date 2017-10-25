@@ -223,7 +223,6 @@ public class ThermalFragment extends android.support.v4.app.Fragment {
                                         imageUrl.add(login.getImage_path() + url);
                                     }
 
-                                    Log.e("therma size", String.valueOf(imageUrl.size()) + "," + String.valueOf(login.getName_array()));
 
                                     GridViewAdapter gridViewAdapter = new GridViewAdapter(getActivity(), imageUrl, login.getName_array());
 
