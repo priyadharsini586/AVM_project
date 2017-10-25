@@ -52,7 +52,7 @@ public class RequestActivity extends AppCompatActivity implements View.OnClickLi
     RelativeLayout rldMainLayout;
     TSnackbar snackbar;
     View snackbarView;
-    TextInputLayout txtInputE_maill,txtInputMobile;
+    TextInputLayout txtInputE_maill,txtInputMobile,txtInputName;
     EditText edtName,edtCompanyName,edtMobile,edtLocation,edtPincode,edtE_mail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +108,7 @@ public class RequestActivity extends AppCompatActivity implements View.OnClickLi
 
         txtInputE_maill = (TextInputLayout) findViewById(R.id.txtInputE_mail);
         txtInputMobile = (TextInputLayout) findViewById(R.id.txtInputMobile);
+        txtInputName = (TextInputLayout) findViewById(R.id.txtInputName);
 
         if (fromWhere.equals("Collection"))
         {
@@ -212,7 +213,28 @@ public class RequestActivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId())
         {
             case R.id.btnSubmit:
-                submitCollection(fromWhere);
+                if (!edtName.getText().toString().isEmpty() && !edtMobile.getText().toString().isEmpty()) {
+                    submitCollection(fromWhere);
+                }else
+                {
+                    if (edtName.getText().toString().isEmpty())
+                    {
+                        txtInputName.setErrorEnabled(true);
+                        txtInputName.setError("Enter the Name");
+                    }else
+                    {
+                        txtInputName.setErrorEnabled(false);
+                    }
+
+                    if (edtMobile.getText().toString().isEmpty())
+                    {
+                        txtInputMobile.setErrorEnabled(true);
+                        txtInputMobile.setError("Enter the Mobile number");
+                    }else
+                    {
+                        txtInputMobile.setErrorEnabled(false);
+                    }
+                }
                 break;
         }
     }
