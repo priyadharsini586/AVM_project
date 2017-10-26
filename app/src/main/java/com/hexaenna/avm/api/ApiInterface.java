@@ -6,6 +6,7 @@ import com.hexaenna.avm.model.Login;
 import com.hexaenna.avm.model.ProductResponse;
 import com.hexaenna.avm.model.RegisterRequest;
 import com.hexaenna.avm.model.RequestJson;
+import com.hexaenna.avm.model.RequestUserDetailsResponse;
 
 import org.json.JSONObject;
 
@@ -48,5 +49,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("product_details.php")
     Call<ProductResponse> productRequest(@Field("x") JSONObject verifyRequest);
+
+    @FormUrlEncoded
+    @POST("user_details.php")
+    Call<RequestUserDetailsResponse> userDetails(@Field("x") JSONObject verifyRequest);
 
 }
