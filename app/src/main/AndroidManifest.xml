@@ -27,16 +27,19 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:theme="@style/AppTheme.Dark" />
+            android:theme="@style/AppTheme.Dark"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CollectionRequest"
             android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/collection" />
+            android:theme="@style/collection"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DownloadActivity"
-            android:theme="@style/AppTheme.Dark" />
+            android:theme="@style/AppTheme.Dark"
+            android:screenOrientation="portrait"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -58,12 +61,15 @@
 
         <activity
             android:name=".E_MailValidation"
-            android:theme="@style/AppTheme.Dark2" />
+            android:theme="@style/AppTheme.Dark2"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RequestActivity"
-            android:theme="@style/AppTheme.Dark1" />
+            android:theme="@style/AppTheme.Dark1"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ProductActivity"
-            android:theme="@style/AppTheme.Dark" />
+            android:theme="@style/AppTheme.Dark"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -44,10 +44,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView txtView,txtDownload,txtPercentage;
     private WebView webHome;
-    LinearLayout ldtCertification,ldtViewDownload,ldtProgressBar;
+    LinearLayout ldtCertification,ldtViewDownload,ldtProgressBar,ldtViewDownloadWrG;
     String fromWhere = "";
     ScrollView scrMainView;
-    TextView txtToolbarText;
+    TextView txtToolbarText,txtNabl,txtScope;
     ProgressBar progressBar;
     final String TAG = "DPG";
     private final static int ALL_PERMISSIONS_RESULT = 101;
@@ -81,6 +81,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         ldtViewDownload =(LinearLayout) findViewById(R.id.ldtViewDownload);
         ldtViewDownload.setOnClickListener(this);
 
+        ldtViewDownloadWrG = (LinearLayout) findViewById(R.id.ldtViewDownloadWrG);
+        ldtViewDownloadWrG.setOnClickListener(this);
+
+        txtNabl = (TextView) findViewById(R.id.txtNabl);
+        txtNabl.setOnClickListener(this);
+
+        txtScope = (TextView) findViewById(R.id.txtScope);
+        txtScope.setOnClickListener(this);
         Bundle extrasBundle = getIntent().getExtras();
         if (extrasBundle != null)
         {
@@ -184,29 +192,73 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.ldtViewDownload:
-                download(v);
+            case R.id.txtNabl:
+                downloadCert(v);
+                break;
+
+            case R.id.ldtViewDownloadWrG:
+                downloadWRG(v);
+                break;
+
+            case R.id.txtScope:
+                downloadScope(v);
                 break;
 
         }
     }
 
-    public void download(View v)
+    public void downloadWRG(View v)
     {
-        boolean fileExists =  new File(Environment.getExternalStorageDirectory() + "/avm/" + "NABL_CERT_AND_SCOPE.pdf").isFile();
+        boolean fileExists =  new File(Environment.getExternalStorageDirectory() + "/avm/" + "WRG_CERT.pdf").isFile();
         if (fileExists)
-            view(v);
+            viewWRG(v);
         else {
             ldtProgressBar.setVisibility(View.VISIBLE);
-            new DownloadFile().execute("http://avmlabs.in/images/download/NABL_CERT_AND_SCOPE.pdf", "NABL_CERT_AND_SCOPE.pdf");
+            new DownloadFile().execute(" http://avmlabs.in/images/download/WRG_CERT.pdf", "WRG_CERT.pdf");
         }
 
 //        new DownloadFile().execute("http://avmlabs.in/images/download/NABL_CERT_AND_SCOPE.pdf", "NABL_CERT_AND_SCOPE.pdf");
     }
 
-    public void view(View v)
+    private void viewWRG(View v) {
+
+
+        File pdfFile = new File(Environment.getExternalStorageDirectory() + "/avm/" + "WRG_CERT.pdf");
+        Uri path=null;
+        if (Build.VERSION.SDK_INT >= 24) {
+            path = FileProvider.getUriForFile(getApplicationContext(), "com.hexaenna.avm", pdfFile);
+        } else {
+            path = Uri.fromFile(pdfFile);
+        }
+
+        // -> filename = maven.pdf
+        Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+        pdfIntent.setDataAndType(path, "application/pdf");
+        pdfIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        try{
+            startActivity(pdfIntent);
+        }catch(ActivityNotFoundException e){
+            Toast.makeText(HomeActivity.this, "No Application available to view PDF", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void downloadCert(View v)
     {
-        File pdfFile = new File(Environment.getExternalStorageDirectory() + "/avm/" + "NABL_CERT_AND_SCOPE.pdf");
+        boolean fileExists =  new File(Environment.getExternalStorageDirectory() + "/avm/" + "AVM_LABS_NABL_CERTIFICATE.pdf").isFile();
+        if (fileExists)
+            viewCert(v);
+        else {
+            ldtProgressBar.setVisibility(View.VISIBLE);
+            new DownloadFile().execute("http://avmlabs.in/images/download/AVM_LABS_NABL_CERTIFICATE.pdf", "AVM_LABS_NABL_CERTIFICATE.pdf");
+        }
+
+//        new DownloadFile().execute("http://avmlabs.in/images/download/NABL_CERT_AND_SCOPE.pdf", "NABL_CERT_AND_SCOPE.pdf");
+    }
+
+    public void viewCert(View v)
+    {
+        File pdfFile = new File(Environment.getExternalStorageDirectory() + "/avm/" + "AVM_LABS_NABL_CERTIFICATE.pdf");
         Uri path=null;
         if (Build.VERSION.SDK_INT >= 24) {
         path = FileProvider.getUriForFile(getApplicationContext(), "com.hexaenna.avm", pdfFile);
@@ -215,6 +267,41 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
           // -> filename = maven.pdf
+        Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+        pdfIntent.setDataAndType(path, "application/pdf");
+        pdfIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        try{
+            startActivity(pdfIntent);
+        }catch(ActivityNotFoundException e){
+            Toast.makeText(HomeActivity.this, "No Application available to view PDF", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void downloadScope(View v)
+    {
+        boolean fileExists =  new File(Environment.getExternalStorageDirectory() + "/avm/" + "AVM_LABS_NABL_SCOPE.pdf").isFile();
+        if (fileExists)
+            viewScope(v);
+        else {
+            ldtProgressBar.setVisibility(View.VISIBLE);
+            new DownloadFile().execute(" http://avmlabs.in/images/download/AVM_LABS_NABL_SCOPE.pdf", "AVM_LABS_NABL_SCOPE.pdf");
+        }
+
+//        new DownloadFile().execute("http://avmlabs.in/images/download/NABL_CERT_AND_SCOPE.pdf", "NABL_CERT_AND_SCOPE.pdf");
+    }
+
+    public void viewScope(View v)
+    {
+        File pdfFile = new File(Environment.getExternalStorageDirectory() + "/avm/" + "AVM_LABS_NABL_SCOPE.pdf");
+        Uri path=null;
+        if (Build.VERSION.SDK_INT >= 24) {
+            path = FileProvider.getUriForFile(getApplicationContext(), "com.hexaenna.avm", pdfFile);
+        } else {
+            path = Uri.fromFile(pdfFile);
+        }
+
+        // -> filename = maven.pdf
         Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
         pdfIntent.setDataAndType(path, "application/pdf");
         pdfIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_CLEAR_TOP);

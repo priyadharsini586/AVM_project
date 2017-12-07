@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -39,7 +40,7 @@ import java.util.ArrayList;
 
 public class DownloadActivity extends AppCompatActivity implements View.OnClickListener {
 
-    LinearLayout ldtNABL,ldtLABCat,ldtAVMSinglePage,ldtCalibrationWheel;
+    LinearLayout ldtNABL,ldtLABCat,ldtAVMSinglePage,ldtCalibrationWheel,ldtWRD;
     private final static int ALL_PERMISSIONS_RESULT = 101;
     ArrayList<String> permissions = new ArrayList<>();
     ArrayList<String> permissionsToRequest;
@@ -58,6 +59,9 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
         ldtNABL = (LinearLayout) findViewById(R.id.ldtNABL);
         ldtNABL.setOnClickListener(this);
 
+        ldtWRD = (LinearLayout) findViewById(R.id.ldtWRD);
+        ldtWRD.setOnClickListener(this);
+
         ldtLABCat = (LinearLayout) findViewById(R.id.ldtLABCat);
         ldtLABCat.setOnClickListener(this);
 
@@ -66,6 +70,13 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
 
         txtPercentage = (TextView) findViewById(R.id.txtPercentage);
         progressBar = (ProgressBar) findViewById(R.id.progressDownload);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+        }else
+        {
+            progressBar.getProgressDrawable().setColorFilter(
+                    Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
+        }
 
         ldtProgressBar = (LinearLayout) findViewById(R.id.ldtProgressDownload);
         ldtProgressBar.setVisibility(View.GONE);
@@ -106,6 +117,10 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
 
             case R.id.ldtCalibrationWheel:
                 downloadImage("http://avmlabs.in/images/download/CalibrationonWheelsBrochure.jpg","calibrationonWheels.jpg");
+                break;
+
+            case R.id.ldtWRD:
+                download("http://avmlabs.in/images/download/WRG_CERT.pdf","WRG_CERT.pdf");
                 break;
         }
     }

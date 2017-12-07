@@ -33,11 +33,19 @@
             android:visibility="gone"
            android:layout_below="@id/toolbar" />
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:id="@+id/ldtCertification"
+            android:orientation="vertical"
+            >
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-            android:id="@+id/ldtCertification"
-            android:layout_below="@id/toolbar">
+
+            >
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,6 +56,12 @@
             android:textSize="20sp"
             android:padding="10dp"
             android:textColor="@android:color/black"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
         <LinearLayout
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -80,7 +94,7 @@ Schedule of Best Measurement Capability &amp; Accreditation Certificate"
             android:padding="10dp"
             android:textColor="@color/oil"
             android:id="@+id/txtFinal"/>
-    </LinearLayout>
+
 
 
         <LinearLayout
@@ -88,7 +102,6 @@ Schedule of Best Measurement Capability &amp; Accreditation Certificate"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_below="@+id/ldtCertification"
             android:id="@+id/ldtViewDownload"
            >
             <TextView
@@ -97,7 +110,7 @@ Schedule of Best Measurement Capability &amp; Accreditation Certificate"
                 android:textColor="@android:color/holo_red_dark"
                 android:text="View"
                 android:gravity="center"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:id="@+id/txtView"/>
             <TextView
@@ -106,7 +119,7 @@ Schedule of Best Measurement Capability &amp; Accreditation Certificate"
                 android:padding="10dp"
                 android:text="Or"
                 android:gravity="center"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/holo_red_dark"
                 />
@@ -116,42 +129,149 @@ Schedule of Best Measurement Capability &amp; Accreditation Certificate"
                 android:textColor="@android:color/holo_red_dark"
                 android:text="Download"
                 android:gravity="center"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:id="@+id/txtDownload"/>
+
+
         </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="NABL CERTIFICATE"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:id="@+id/txtNabl"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="NABL SCOPE"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:id="@+id/txtScope"
+                    android:layout_gravity="center"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp">
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:layout_gravity="center">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/img_1"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WRG CERTIFICATIONS - Cert No: QMS-XX-XVII-X-3504"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:paddingTop="10dp"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="American International Accreditation Organization – Bureau of Accredited Registrars, (AIAO-BAR) &amp; World Registrar Group Certification, (WRG Certifications) [AIAO-BAR] "
+                        android:textSize="15sp"
+                        android:padding="10dp"
+                        android:textColor="@color/oil"
+                        />
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:id="@+id/ldtViewDownloadWrG"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:text="View"
+                            android:gravity="center"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="Or"
+                            android:gravity="center"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/holo_red_dark"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:text="Download"
+                            android:gravity="center"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
+        </LinearLayout>
+        </LinearLayout>
+
+        </LinearLayout>
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/ldtViewDownload"
             android:id="@+id/ldtProgressBar"
+            android:layout_centerInParent="true"
             android:visibility="gone">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:gravity="center">
-        <ProgressBar
-            android:id="@+id/progressBarPercen"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:max="100"
-            android:minHeight="30dp"
-            android:minWidth="200dp"
-            android:progress="1"
-            />
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100%"
-                android:textColor="@color/primary_dark"
-                android:id="@+id/txtPercentage"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <ProgressBar
+                    android:id="@+id/progressBarPercen"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:minHeight="30dp"
+                    android:minWidth="200dp"
+                    android:progress="1"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100%"
+                    android:textColor="@color/primary_dark"
+                    android:id="@+id/txtPercentage"/>
+            </LinearLayout>
         </LinearLayout>
 </RelativeLayout>
 
